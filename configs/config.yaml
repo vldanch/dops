@@ -1,0 +1,9 @@
+services:
+  - name: example
+    url: https://example.com
+    alert_on_failure: true
+
+notify:
+  telegram:
+    token: "bot:YOUR_BOT_TOKEN"
+    chat_id: 123456789
