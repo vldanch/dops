@@ -1,4 +1,4 @@
-package cmd
+package ping
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
+	"github.com/vldanch/dops/pkg/config" // правильный импорт
 )
 
 var PingCmd = &cobra.Command{
@@ -16,19 +17,17 @@ var PingCmd = &cobra.Command{
 			fmt.Println("Please provide a --url")
 			return
 		}
-		pingService(url, config.Ping.Timeout, config.Ping.Retries)
+
+		cfg := config.Get() // получаем конфиг
+
+		pingService(url, cfg.Ping.Timeout, cfg.Ping.Retries)
 	},
 }
 
 var url string
-var config Config
 
 func init() {
 	PingCmd.Flags().StringVar(&url, "url", "", "URL to ping")
-}
-
-func SetConfig(c Config) {
-	config = c
 }
 
 func pingService(url string, timeout, retries int) {

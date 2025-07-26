@@ -1,6 +1,6 @@
 package main
 
-import "dops/cmd" // ← Module name from Go.mod
+import "github.com/vldanch/dops/cmd" // ← Module name from Go.mod
 
 func main() {
 	cmd.Execute()
