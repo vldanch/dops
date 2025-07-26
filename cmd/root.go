@@ -10,18 +10,36 @@ import (
 
 var cfgFile string
 
+type Config struct {
+	Ping struct {
+		Timeout int
+		Retries int
+	}
+	Notify struct {
+		TelegramToken string `mapstructure:"telegram_token"`
+		ChatID        string `mapstructure:"chat_id"`
+	}
+}
+
+var AppConfig Config
+
 var rootCmd = &cobra.Command{
 	Use:   "dops",
-	Short: "DevOps cli assistant",
-	Long:  `dops - easy CLI tool for Devops with ping and monitoring.`,
+	Short: "DevOps CLI Assistant",
+	Long:  `dops - smart CLI tool for DevOps: ping, notifications, system checks.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Use the --help command for the list of available commands.")
+		fmt.Println("Use `dops --help` to see available commands.")
 	},
 }
 
 func Execute() {
+	cobra.OnInitialize(initConfig)
+
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./configs/config.yaml)")
+	rootCmd.AddCommand(PingCmd)
+
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
+		fmt.Println("Error:", err)
 		os.Exit(1)
 	}
 }
@@ -37,12 +55,14 @@ func initConfig() {
 	}
 
 	if err := viper.ReadInConfig(); err != nil {
-		fmt.Println("Configuration reading error:", err)
+		fmt.Println("Config read error:", err)
 		os.Exit(1)
 	}
-}
 
-func init() {
-	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./configs/config.yaml)")
+	if err := viper.Unmarshal(&AppConfig); err != nil {
+		fmt.Println("Config unmarshal error:", err)
+		os.Exit(1)
+	}
+
+	SetConfig(AppConfig)
 }
