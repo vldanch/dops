@@ -10,8 +10,14 @@ make build
 ```
 
 ## 🧪 Example usage
+
+Run the `ping` command to check the availability of a URL:
+
 ```bash
 ./dops ping --url https://example.com
+
+# Output:
+# Ping attempt 1 to https://example.com ... Success! Status code: 200
 ```
 
 
