@@ -19,7 +19,16 @@ Run the `ping` command to check the availability of a URL:
 # Output:
 # Ping attempt 1 to https://example.com ... Success! Status code: 200
 ```
+Run the `checksystem` command to display system metrics:
+```bash
+./dops checksystem
 
+# Output:
+# CPU Usage: 0.00%
+# Memory Usage: 3.81% (Used: 298 MB, Total: 7829 MB)
+# Disk Usage (/): 0.65% (Used: 6 GB, Total: 1006 GB)
+# System Uptime: 3 hours
+```
 
 # TODO
 
@@ -29,7 +38,7 @@ Run the `ping` command to check the availability of a URL:
 - ✅ Reading YAML config
 
 ## 0.2.0
-- ❌ `check system` command
+- ✅ `checksystem` command
 - ❌ Log analyzer
 
 ## 0.3.0
