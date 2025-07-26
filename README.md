@@ -20,7 +20,7 @@ make build
 ## MVP 0.1.0
 - ✅ Base project structure
 - ✅ `ping` command
-- 🕓 Reading YAML config
+- ✅ Reading YAML config
 
 ## 0.2.0
 - ❌ `check system` command
