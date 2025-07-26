@@ -30,7 +30,12 @@ Run the `checksystem` command to display system metrics:
 # System Uptime: 3 hours
 ```
 
-# TODO
+# 📅 ROADMAP
+
+For details on planned features and future development, see the [ROADMAP.md](ROADMAP.md) file.
+
+
+# 🛠 TODO
 
 ## MVP 0.1.0
 - ✅ Base project structure
