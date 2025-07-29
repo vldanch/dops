@@ -9,6 +9,12 @@ import (
 	"github.com/vldanch/dops/internal/config"
 )
 
+var (
+	url     string
+	timeout int
+	retries int
+)
+
 var PingCmd = &cobra.Command{
 	Use:   "ping",
 	Short: "Ping an HTTP service",
@@ -18,16 +24,26 @@ var PingCmd = &cobra.Command{
 			return
 		}
 
-		cfg := config.Get() // получаем конфиг
+        // you can take values from the configuration if the flags are not set (for example, 0 or -1)
+		cfg := config.Get()
 
-		pingService(url, cfg.Ping.Timeout, cfg.Ping.Retries)
+        // If timeout is not specified in flags, we use it from the config
+		if timeout <= 0 {
+			timeout = cfg.Ping.Timeout
+		}
+		// If retries is not set, we use from config
+		if retries <= 0 {
+			retries = cfg.Ping.Retries
+		}
+
+		pingService(url, timeout, retries)
 	},
 }
 
-var url string
-
 func init() {
 	PingCmd.Flags().StringVar(&url, "url", "", "URL to ping")
+	PingCmd.Flags().IntVar(&timeout, "timeout", 0, "Timeout in seconds for each ping attempt")
+	PingCmd.Flags().IntVar(&retries, "retries", 0, "Number of ping retries")
 }
 
 func pingService(url string, timeout, retries int) {
