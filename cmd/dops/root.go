@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"fmt"
@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/vldanch/dops/cmd/checksystem"
-	"github.com/vldanch/dops/cmd/ping"
+	"github.com/vldanch/dops/internal/checksystem"
+	"github.com/vldanch/dops/internal/ping"
 	"github.com/vldanch/dops/internal/config"
 )
 
