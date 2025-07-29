@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
-	"github.com/vldanch/dops/pkg/config" // правильный импорт
+	"github.com/vldanch/dops/internal/config"
 )
 
 var PingCmd = &cobra.Command{

@@ -9,7 +9,7 @@ import (
 
 	"github.com/vldanch/dops/cmd/checksystem"
 	"github.com/vldanch/dops/cmd/ping"
-	"github.com/vldanch/dops/pkg/config"
+	"github.com/vldanch/dops/internal/config"
 )
 
 var cfgFile string
