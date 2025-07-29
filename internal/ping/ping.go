@@ -53,12 +53,16 @@ func pingService(url string, timeout, retries int) {
 
 	for i := 1; i <= retries; i++ {
 		fmt.Printf("Ping attempt %d to %s ... ", i, url)
+		start := time.Now()
 		resp, err := client.Get(url)
+		elapsed := time.Since(start)
+
 		if err != nil {
 			fmt.Printf("Failed: %s\n", err)
 			continue
 		}
-		fmt.Printf("Success! Status code: %d\n", resp.StatusCode)
+
+		fmt.Printf("Success! Status code: %d, Response time: %v\n", resp.StatusCode, elapsed)
 		resp.Body.Close()
 		return
 	}
