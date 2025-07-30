@@ -1,6 +1,6 @@
 # dops — DevOps CLI Assistant
 
-`dops` - is a smart CLI tool for Devops Engineers: checks for the availability of services, log analysis, notifications, system metrics, etc.
+`dops` - is a smart CLI tool for DevOps engineers that brings together essential checks and utilities in one convenient tool: service availability checks, log analysis, notifications, system metrics, and more.
 
 
 ## 🚀 Installation
