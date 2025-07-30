@@ -31,7 +31,7 @@ Check SSL certificate details for a URL:
 # Valid until:    Thu, 15 Jan 2026 23:59:59 UTC
 # Days left:      169
 # Trusted:        Yes
-
+```
 
 
 Run the `checksystem` command to display system metrics:
