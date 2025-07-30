@@ -20,6 +20,20 @@ Run the ping command to check the availability of one or more URLs concurrently 
 # Ping attempt 1 to https://github.com ... Success! Status code: 200, Response time: 228.728898ms
 # Ping attempt 1 to https://example.com ... Success! Status code: 200, Response time: 585.865654ms
 ```
+Check SSL certificate details for a URL:
+```bash
+./dops cert --url https://example.com
+# Output:
+# Certificate for https://example.com
+# Subject:        *.example.com
+# Issuer:         DigiCert Global G3 TLS ECC SHA384 2020 CA1
+# Valid from:     Wed, 15 Jan 2025 00:00:00 UTC
+# Valid until:    Thu, 15 Jan 2026 23:59:59 UTC
+# Days left:      169
+# Trusted:        Yes
+
+
+
 Run the `checksystem` command to display system metrics:
 ```bash
 ./dops checksystem
@@ -41,6 +55,7 @@ For details on planned features and future development, see the [ROADMAP.md](ROA
 ## MVP 0.1.0
 - ✅ Base project structure
 - ✅ `ping` command
+- ✅ `cert` command
 - ✅ Reading YAML config
 
 ## 0.2.0
