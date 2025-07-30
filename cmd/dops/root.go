@@ -9,6 +9,7 @@ import (
 
 	"github.com/vldanch/dops/internal/checksystem"
 	"github.com/vldanch/dops/internal/ping"
+	"github.com/vldanch/dops/internal/cert"
 	"github.com/vldanch/dops/internal/config"
 )
 
@@ -28,6 +29,7 @@ func init() {
 
 	rootCmd.AddCommand(ping.PingCmd)
 	rootCmd.AddCommand(checksystem.Cmd)
+	rootCmd.AddCommand(cert.CertCmd)
 }
 
 func Execute() {
