@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/vldanch/dops/internal/checksystem"
-	"github.com/vldanch/dops/internal/ping"
+	"github.com/vldanch/dops/internal/httpcheck"
 	"github.com/vldanch/dops/internal/cert"
 	"github.com/vldanch/dops/internal/config"
 )
@@ -27,7 +27,7 @@ var rootCmd = &cobra.Command{
 func init() {
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./configs/config.yaml)")
 
-	rootCmd.AddCommand(ping.PingCmd)
+	rootCmd.AddCommand(httpcheck.HttpCheckCmd)
 	rootCmd.AddCommand(checksystem.Cmd)
 	rootCmd.AddCommand(cert.CertCmd)
 }
