@@ -59,7 +59,7 @@ For details on planned features and future development, see the [ROADMAP.md](ROA
 
 ## MVP 0.1.0
 - ✅ Base project structure
-- ✅ `ping` command
+- ✅ `httpcheck` command
 - ✅ `cert` command
 - ✅ Reading YAML config
 
