@@ -14,11 +14,16 @@ make build
 Run the ping command to check the availability of one or more URLs concurrently with retries and timeout options:
 
 ```bash
-./dops ping --url https://example.com --url https://github.com --timeout 5 --retries 3
+## 🧪 Example usage
+
+Run the `httpcheck` command to check the availability of one or more URLs concurrently with retries and timeout options:
+
+```bash
+./dops httpcheck --url https://example.com --url https://github.com --timeout 5 --retries 3
 
 # Output:
-# Ping attempt 1 to https://github.com ... Success! Status code: 200, Response time: 228.728898ms
-# Ping attempt 1 to https://example.com ... Success! Status code: 200, Response time: 585.865654ms
+# HTTP attempt 1 to https://github.com ... Success! Status code: 200, Response time: 228.728898ms
+# HTTP attempt 1 to https://example.com ... Success! Status code: 200, Response time: 585.865654ms
 ```
 Check SSL certificate details for a URL:
 ```bash
