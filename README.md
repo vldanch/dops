@@ -11,13 +11,7 @@ make build
 
 ## 🧪 Example usage
 
-Run the ping command to check the availability of one or more URLs concurrently with retries and timeout options:
-
-```bash
-## 🧪 Example usage
-
 Run the `httpcheck` command to check the availability of one or more URLs concurrently with retries and timeout options:
-
 ```bash
 ./dops httpcheck --url https://example.com --url https://github.com --timeout 5 --retries 3
 
