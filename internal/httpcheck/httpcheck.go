@@ -44,6 +44,7 @@ var HttpCheckCmd = &cobra.Command{
 			concurrent = 10
 		}
 
+		// This is the creation of a buffered channel with capacity concurrent
 		sem := make(chan struct{}, concurrent)
 		var wg sync.WaitGroup
 		wg.Add(len(urls))
