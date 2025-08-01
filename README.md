@@ -11,9 +11,10 @@ make build
 
 ## 🧪 Example usage
 
-Run the `httpcheck` command to check the availability of one or more URLs concurrently with retries and timeout options:
+Run the `httpcheck` command to check the availability of one or more URLs concurrently with retries, timeout, and concurrency limit:
+
 ```bash
-./dops httpcheck --url https://example.com --url https://github.com --timeout 5 --retries 3
+./dops httpcheck --url https://example.com --url https://github.com --timeout 5 --retries 3 --concurrent 10
 
 # Output:
 # HTTP attempt 1 to https://github.com ... Success! Status code: 200, Response time: 228.728898ms
