@@ -11,9 +11,10 @@ import (
 )
 
 var (
-	urls    []string
-	timeout int
-	retries int
+	urls       []string
+	timeout    int
+	retries    int
+	concurrent int
 )
 
 // HttpCheckCmd represents the 'httpcheck' command in the CLI
@@ -39,14 +40,20 @@ var HttpCheckCmd = &cobra.Command{
 		if retries == 0 {
 			retries = cfg.Ping.Retries
 		}
+		if concurrent == 0 {
+			concurrent = 10
+		}
 
+		sem := make(chan struct{}, concurrent)
 		var wg sync.WaitGroup
 		wg.Add(len(urls))
 
 		for _, url := range urls {
 			go func(u string) {
 				defer wg.Done()
+				sem <- struct{}{}
 				checkHTTP(u, timeout, retries)
+				<-sem
 			}(url)
 		}
 
@@ -58,6 +65,7 @@ func init() {
 	HttpCheckCmd.Flags().StringArrayVar(&urls, "url", []string{}, "URL(s) to check, can be specified multiple times")
 	HttpCheckCmd.Flags().IntVar(&timeout, "timeout", 0, "Timeout per HTTP request in seconds (overrides config)")
 	HttpCheckCmd.Flags().IntVar(&retries, "retries", 0, "Number of retries per URL (overrides config)")
+	HttpCheckCmd.Flags().IntVar(&concurrent, "concurrent", 0, "Maximum number of concurrent requests (default: 10)")
 }
 
 func checkHTTP(url string, timeout, retries int) {
