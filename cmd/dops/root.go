@@ -31,7 +31,7 @@ func init() {
 	rootCmd.AddCommand(httpcheck.HttpCheckCmd)
 	rootCmd.AddCommand(checksystem.Cmd)
 	rootCmd.AddCommand(cert.CertCmd)
-	rootCmd.AddCommand(ping.NewPingCmd)
+	rootCmd.AddCommand(ping.NewPingCmd())
 }
 
 func Execute() {
