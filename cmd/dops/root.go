@@ -7,10 +7,11 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/vldanch/dops/internal/checksystem"
-	"github.com/vldanch/dops/internal/httpcheck"
 	"github.com/vldanch/dops/internal/cert"
+	"github.com/vldanch/dops/internal/checksystem"
 	"github.com/vldanch/dops/internal/config"
+	"github.com/vldanch/dops/internal/httpcheck"
+	"github.com/vldanch/dops/internal/ping"
 )
 
 var cfgFile string
@@ -30,6 +31,7 @@ func init() {
 	rootCmd.AddCommand(httpcheck.HttpCheckCmd)
 	rootCmd.AddCommand(checksystem.Cmd)
 	rootCmd.AddCommand(cert.CertCmd)
+	rootCmd.AddCommand(ping.NewPingCmd())
 }
 
 func Execute() {

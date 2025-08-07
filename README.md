@@ -11,6 +11,26 @@ make build
 
 ## 🧪 Example usage
 
+Run the `ping` command to check network connectivity to one or more hosts using a TCP ping to port 80 (does not require root privileges)
+
+✅ This method does not require root access and works cross-platform by attempting a TCP connection to the host on port 80.
+
+```bash
+./dops ping www.google.com github.com example.com
+
+# Output:
+# Pinging www.google.com...
+# TCP ping to www.google.com: connected successfully in 46 ms
+#
+# Pinging github.com...
+# TCP ping to github.com: connected successfully in 65 ms
+#
+# Pinging example.com...
+# TCP ping to example.com: connected successfully in 125 ms
+```
+
+
+
 Run the `httpcheck` command to check the availability of one or more URLs concurrently with retries, timeout, and concurrency limit:
 
 ```bash
